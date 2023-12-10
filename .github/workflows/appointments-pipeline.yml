@@ -25,3 +25,10 @@ jobs:
     - name: Update docker-compose.yml
       run: |
         sed -i "s|image: abwqr/appointments:.*|image: abwqr/appointments:${APPOINTMENTS_VERSION}|g" docker-compose.yml
+    - name: Commit and Push Changes
+      run: |
+          git config user.name "$USERNAME"
+          git config user.email "$EMAIL"
+          git add docker-compose.yml
+          git commit -m "Update Docker Compose image tag [skip ci]"
+          git push
