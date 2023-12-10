@@ -26,7 +26,7 @@ jobs:
       run: docker push abwqr/frontend:$FRONTEND_VERSION
     - name: Update docker-compose.yml
       run: |
-        sed -i "s|image: abwqr/doctors:.*|image: abwqr/doctors:${FRONTEND_VERSION}|g" docker-compose.yml
+        sed -i "s|image: abwqr/frontend:.*|image: abwqr/frontend:${FRONTEND_VERSION}|g" docker-compose.yml
     - name: Commit and Push Changes
       run: |
           git config user.name "GitHub Actions"
