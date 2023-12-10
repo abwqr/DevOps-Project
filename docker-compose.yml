@@ -13,7 +13,7 @@ services:
     networks:
     - app1
   frontend:
-    image: abwqr/frontend:4a43e6
+    image: abwqr/frontend:67cd1d
     ports:
       - 8080:8080
     networks:
