@@ -27,6 +27,8 @@ jobs:
         sed -i "s|image: abwqr/appointments:.*|image: abwqr/appointments:${APPOINTMENTS_VERSION}|g" docker-compose.yml
     - name: Commit and Push Changes
       run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
           git add docker-compose.yml
           git commit -m "Update Docker Compose image tag [skip ci]"
           git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
