@@ -6,6 +6,12 @@ doctors = [
   { 'id': "2",'firstName': "Good", 'lastName': "Doctor",'speciality':"Test"  }
 ]
 
+@app.route('/')
+def hello():
+  greeting = "Home Page for Doctors"
+  return greeting
+
+
 @app.route('/hello')
 def hello():
   greeting = "Hello world!"
