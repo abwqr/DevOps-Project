@@ -1,7 +1,7 @@
 version: '3'
 services:
   appointments:
-    image: abwqr/appointments:${{env.APPOINTMENTS_VERSION}}
+    image: abwqr/appointments:${APPOINTMENTS_VERSION}
     ports:
       - 9000:9000
     networks:
