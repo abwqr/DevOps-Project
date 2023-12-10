@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Home Page\n');
+  res.send('Home Page!\n');
 });
 
 app.get('/hello', (req, res) => {
