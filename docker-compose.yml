@@ -7,7 +7,7 @@ services:
     networks:
     - app1
   doctors:
-    image: abwqr/doctors:bee589
+    image: abwqr/doctors:86a863
     ports:
       - 9090:9090
     networks:
