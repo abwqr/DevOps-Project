@@ -7,7 +7,7 @@ doctors = [
 ]
 
 @app.route('/')
-def hello():
+def home():
   greeting = "Home Page for Doctors!!!"
   return greeting
 

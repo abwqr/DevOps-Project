@@ -1,8 +1,7 @@
 FROM python:3.8-slim-buster
 
-WORKDIR /doctors
 
-COPY doctors/requirements.txt /doctors/
+COPY doctors/requirements.txt .
 RUN pip3 install -r requirements.txt
 
 COPY . .
