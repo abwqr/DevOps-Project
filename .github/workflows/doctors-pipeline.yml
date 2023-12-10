@@ -1,0 +1,40 @@
+name: Doctors Docker Image CI
+
+on:
+  push:
+    paths:
+      - 'doctors/'
+  pull_request:
+    paths:
+      - 'doctors/'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker login
+      env: 
+        DOCKER_USER:  ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+    - name: Set env
+      run: echo "DOCTORS_VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+    - name: Build the Docker image
+      run: docker build . --file doctors/Dockerfile --tag abwqr/doctors:$DOCTORS_VERSION
+    - name: Docker push
+      run: docker push abwqr/doctors:$DOCTORS_VERSION
+    - name: Update docker-compose.yml
+      run: |
+        sed -i "s|image: abwqr/doctors:.*|image: abwqr/doctors:${DOCTORS_VERSION}|g" docker-compose.yml
+    - name: Commit and Push Changes
+      run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add docker-compose.yml
+          git commit -m "Update Docker Compose image tag [skip ci]"
+          git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
+          git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
