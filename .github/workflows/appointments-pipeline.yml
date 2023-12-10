@@ -33,3 +33,6 @@ jobs:
           git commit -m "Update Docker Compose image tag [skip ci]"
           git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
           git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
