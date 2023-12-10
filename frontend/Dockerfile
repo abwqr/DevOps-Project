@@ -11,6 +11,6 @@ RUN npm install
 
 RUN apk add curl 
 
-COPY frontend/ ./
+COPY frontend/ .
 
 CMD [ "npm", "start" ]
