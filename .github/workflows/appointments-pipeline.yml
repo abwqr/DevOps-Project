@@ -27,8 +27,8 @@ jobs:
         sed -i "s|image: abwqr/appointments:.*|image: abwqr/appointments:${APPOINTMENTS_VERSION}|g" docker-compose.yml
     - name: Commit and Push Changes
       run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
+          git config --global user.name 'abwqr'
+          git config --global user.email 'ab1502144@gmail.com'
           git add docker-compose.yml
           git commit -m "Update Docker Compose image tag [skip ci]"
-          git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
+          git push
