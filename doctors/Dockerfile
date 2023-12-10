@@ -8,5 +8,5 @@ COPY . .
 
 EXPOSE 9090
 
-CMD ["python3", "app.py"]
+CMD ["python3", "doctors/app.py"]
 
