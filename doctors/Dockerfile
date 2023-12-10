@@ -8,4 +8,5 @@ COPY . .
 
 EXPOSE 9000
 
-CMD [ "python3", "-m" , "flask", "run"]
+CMD ["python3", "app.py"]
+
