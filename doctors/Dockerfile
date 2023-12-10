@@ -8,4 +8,4 @@ COPY . .
 
 EXPOSE 9000
 
-CMD [ "python3", "-m" , "app"]
+CMD [ "python3", "-m" , "app.py"]
