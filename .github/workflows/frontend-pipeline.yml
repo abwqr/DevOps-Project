@@ -1,12 +1,12 @@
-name: Appointments Docker Image CI
+name: Frontend Docker Image CI
 
 on:
   push:
     paths:
-      - 'appointments/**'
+      - 'frontend/**'
   pull_request:
     paths:
-      - 'appointments/**'
+      - 'frontend/**'
 
 jobs:
   build:
@@ -19,14 +19,14 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
     - name: Set env
-      run: echo "APPOINTMENTS_VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+      run: echo "FRONTEND_VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --file appointments/Dockerfile --tag abwqr/appointments:$APPOINTMENTS_VERSION
+      run: docker build . --file frontend/Dockerfile --tag abwqr/frontend:$FRONTEND_VERSION
     - name: Docker push
-      run: docker push abwqr/appointments:$APPOINTMENTS_VERSION
+      run: docker push abwqr/frontend:$FRONTEND_VERSION
     - name: Update docker-compose.yml
       run: |
-        sed -i "s|image: abwqr/appointments:.*|image: abwqr/appointments:${APPOINTMENTS_VERSION}|g" docker-compose.yml
+        sed -i "s|image: abwqr/doctors:.*|image: abwqr/doctors:${FRONTEND_VERSION}|g" docker-compose.yml
     - name: Commit and Push Changes
       run: |
           git config user.name "GitHub Actions"

@@ -4,7 +4,7 @@ WORKDIR /app
 
 EXPOSE 8080
 
-COPY package*.json ./
+COPY frontend/package*.json ./
 
 RUN npm install
 
