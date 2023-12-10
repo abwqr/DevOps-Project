@@ -17,7 +17,7 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
     - name: Set env
-      run: echo "APPOINTMENTS_VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+      run: echo "APPOINTMENTS_VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> .env
     - name: Build the Docker image
       run: docker build . --file appointments/Dockerfile --tag abwqr/appointments:$APPOINTMENTS_VERSION
     - name: Docker push
