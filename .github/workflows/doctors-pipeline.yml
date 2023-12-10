@@ -3,10 +3,10 @@ name: Doctors Docker Image CI
 on:
   push:
     paths:
-      - 'doctors/'
+      - 'doctors/**'
   pull_request:
     paths:
-      - 'doctors/'
+      - 'doctors/**'
 
 jobs:
   build:
