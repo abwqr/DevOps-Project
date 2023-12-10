@@ -3,7 +3,7 @@
 const express = require('express');
 // Constants
 const PORT = 8080;
-const HOST = '127.0.0.1';
+const HOST = '0.0.0.0';
 
 const axios = require('axios');
 
@@ -12,10 +12,6 @@ const app = express();
 app.use(express.static('public'));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html'); // Adjust the path to your HTML file
-});
-
-app.get('/', (req, res) => {
-  res.send('Home Page!\n');
 });
 
 app.get('/hello', (req, res) => {
