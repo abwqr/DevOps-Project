@@ -22,3 +22,5 @@ jobs:
       run: docker build . --file appointments/Dockerfile --tag abwqr/appointments:$APPOINTMENTS_VERSION
     - name: Docker push
       run: docker push abwqr/appointments:$APPOINTMENTS_VERSION
+    - name: Update docker-compose.yml
+      run: sed -i "s|image: abwqr/appointments:.*|image: abwqr/appointments:${APPOINTMENTS_VERSION}|g" docker-compose.yml
