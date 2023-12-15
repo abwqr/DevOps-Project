@@ -1,5 +1,16 @@
 version: '3'
 services:
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: devops_project
+      MYSQL_PASSWORD: asdf1234
+
+    ports:
+      - "3306:3306"
+    networks:
+    - app1
   appointments:
     image: abwqr/appointments:f73946
     ports:
